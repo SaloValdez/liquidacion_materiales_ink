@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'poppins-regular';
+    src: url('../fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url('../fonts/Poppins-Light.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+
+  .contenedor{
+    border: 1px solid black;
+    width: 80%;
+    margin: auto;
+   padding: 50px;
+  }
+
+  
+  .contenedor__input{
+    position: relative;
+    display: flex;
+    width:fit-content;
+    font-size: 17px;
+    width: 100%;
+
+  }
+
+  .contenedor__input input{
+    padding: 4px 5px 4px 5px;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid rgb(74, 74, 74);
+    text-transform:uppercase;
+    width: 100%;
+    font-weight: bold;
+    color: rgb(78, 78, 78);
+    cursor:pointer;
+  }
+
+  .contenedor__input label{
+    position: absolute;
+    top:6px;
+    transition: 0.2s;
+    left: 5px;
+    font-weight: bold;
+    color: rgb(162, 162, 162);
+  }
+
+  .contenedor__input input:focus{
+    background-color: rgb(225, 255, 245);
+    border: 1px solid rgb(5, 178, 49)
+
+  }
+  
+  .contenedor__input input:is(:focus,:valid) ~ label{
+    position: absolute;
+    top:-14px;
+    font-size: 12px;
+    background-color: white;
+    padding: 0px 3px 0px 3px;
+    color:rgb(5, 178, 49)
+
+  }
+
+  .contenedor__input input:valid{
+    border: 1px solid rgb(171, 169, 169);
+  }
+
+
+  .contenedor-group-input{
+    display: flex;
+  }
+
+.contenedor button{
+    padding: 5px 10px 5px 10px;
+    font-size: 17px;
+    background-color:rgb(5, 178, 49);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+
+}
+
+
+.contenedor button:hover{
+    background-color:rgb(10, 148, 45);
+}
+
+.contenedor button:active{
+    transform: scale(1.1);
+}
