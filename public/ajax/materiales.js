@@ -1,30 +1,44 @@
+
+
+
 $(document).ready(function(){
-    listarUltimoEmpleado();
-    alert('hola');
+    listar();
 });
 
 
 
 
 
-function listarUltimoEmpleado(){
+function listar(){
     $.ajax({  
         type:"POST",
-        url:"./controller/materiales.controller.php",
+        url:"./controller/materiales.controller.php",   
         success:function(r){
             datos=jQuery.parseJSON(r);
+            resp = datos['arrayMateriales'];
+            console.log(resp);
 
-            console.log(datos);
-            // resp = datos['resp'];
-            // if (resp == 0){
-            //   $('#fechaUltimoRegistroSubcategoria').text('No existe registros');
-            //   $(".detalle-ultimo-registro").remove();
-            // }else{
-            //   // console.log(datos[1]['arrayEmpleado']['nombre_empleado']);
-            //     $('#fechaUltimoRegistroEmpleado').text(datos['fecha']+ ' ('+ datos['hora'] +')');
-            //     $('#nombresUltimoRegistro').text(datos[0]['arrayRegistro']['nombre_empleado']+ ' '+ datos[0]['arrayRegistro']['apellido_empleado']);
-            //     $('#nombresPorUltimoRegistro').text(datos[1]['arrayEmpleado']['nombre_empleado']+ ' '+ datos[1]['arrayEmpleado']['apellido_empleado']);
-            // }
+            let modeloTabla = '<table>';
+            modeloTabla = modeloTabla + '<tr><th>SAP</th><th>DESCRIPCION</th><th>NOMBRE</th></tr>';
+            resp.forEach(p => {
+                modeloTabla = modeloTabla + '<tr>';
+                modeloTabla = modeloTabla + '<td>'+ p['sap_mat']+' </td>'
+                modeloTabla = modeloTabla + '<td>'+ p['descripcion_mat']+' </td>'
+                modeloTabla = modeloTabla + '<td>'+ p['nombre_mat']+' </td>'
+                
+                
+                modeloTabla = modeloTabla + '</tr>'
+                
+            });
+
+            modeloTabla = modeloTabla + '</table>';
+
+
+            document.getElementById('contenedor__tabla').innerHTML= modeloTabla;
+
+         
+          
+           
         }
       });
   }

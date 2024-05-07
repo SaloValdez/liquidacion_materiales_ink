@@ -13,7 +13,9 @@
     margin: 0;
   }
   
-
+body{
+  font-family: Poppins-Light;
+}
   .contenedor{
     border: 1px solid black;
     width: 80%;
@@ -45,7 +47,7 @@
 
   .contenedor__input label{
     position: absolute;
-    top:6px;
+    top:2px;
     transition: 0.2s;
     left: 5px;
     font-weight: bold;
@@ -65,7 +67,7 @@
   
   .contenedor__input input:is(:focus,:valid) ~ label{
     position: absolute;
-    top:-14px;
+    top:-19px;
     font-size: 12px;
     background-color: white;
     padding: 0px 3px 0px 3px;
@@ -102,4 +104,20 @@
 
 .contenedor button:active{
     transform: scale(1.1);
+}
+.contenedor__tabla table{
+  margin-top: 20px;
+  border: 1px solid black;
+  border-collapse:collapse;
+  /* font-family: poppins-regular; */
+}
+
+.contenedor__tabla table th{
+    background-color: rgb(5, 178, 49);
+    border: 1px solid black;
+}
+
+.contenedor__tabla table td{
+  border: 1px solid rgb(129, 129, 129);
+  padding: 5px;
 }

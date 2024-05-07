@@ -34,4 +34,5 @@ require_once "../app/materiales.php";
 
 $obj = new Materiales();
 $res = $obj->listarMateriales();
-var_dump($res);
+// var_dump($res);
+echo json_encode($res);
