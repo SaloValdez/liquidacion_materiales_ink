@@ -52,6 +52,11 @@
     color: rgb(162, 162, 162);
   }
 
+  .contenedor__input label:hover{
+    cursor: pointer;
+    color: rgb(126, 126, 126);
+  }
+
   .contenedor__input input:focus{
     background-color: rgb(225, 255, 245);
     border: 1px solid rgb(5, 178, 49)
