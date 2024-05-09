@@ -1,3 +1,19 @@
+:root {
+  --colorFirst1: rgb(5, 178, 49);
+  --colorFirst2:rgb(5, 178, 49);;
+  --colorDanger:#c9302c;
+  --colorSecond:rgb(60, 205, 111);
+  
+  --colorStandar: white; 
+  --colorDark:rgb(37, 37, 37);
+
+  --colorpalet5:yellow;
+
+
+
+}
+
+
 @font-face {
     font-family: 'poppins-regular';
     src: url('../fonts/Poppins-Regular.ttf');
@@ -7,6 +23,11 @@
     font-family: 'Poppins-Light';
     src: url('../fonts/Poppins-Light.ttf');
 }
+@font-face {
+  font-family: 'Poppins-ExtraLight';
+  src: url('../fonts/Poppins-ExtraLight.ttf');
+}
+
 
 * {
     padding: 0;
@@ -84,7 +105,7 @@ body{
     display: flex;
   }
 
-.contenedor button{
+ .btnOn{
     padding: 5px 10px 5px 10px;
     font-size: 17px;
     background-color:rgb(5, 178, 49);
@@ -94,17 +115,46 @@ body{
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
+    text-decoration: none;
 
 }
 
-
-.contenedor button:hover{
+ .btnOn:hover{
     background-color:rgb(10, 148, 45);
 }
 
-.contenedor button:active{
+ .btnOn:active{
     transform: scale(1.1);
 }
+
+.btnOff{
+  padding: 5px 10px 5px 10px;
+  font-size: 17px;
+  background-color:rgb(212, 70, 70);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  text-decoration: none;
+
+}
+
+.btnOff:hover{
+  background-color:rgb(159, 13, 13);
+}
+
+.btnOff:active{
+  transform: scale(1.1);
+}
+
+.btnTabla{
+  font-family: Poppins-ExtraLight;
+}
+
+
+
 .contenedor__tabla table{
   margin-top: 20px;
   border: 1px solid black;

@@ -6,9 +6,11 @@
     <title>Document</title> 
 
     <link rel="stylesheet" href="./public/resources/css/index.css">
-
+    <link rel="stylesheet" href="./public/resources/css/swetAlert.css">
 
     <script src="./public/library/jquery271.js"></script>
+    <script src="./public/library/sweetalert2@11.js"></script>
+    <script src="./public/library/sweetAlertToast.js"></script>
 
 
 </head>
@@ -18,29 +20,32 @@
 
 
             <div class="contenedor-group-input">
-                <div class="contenedor__input">
-                    <input type='text' id="txtCodSap" required ></input>
-                    <label for="txtCodSap">
-                        Código Sap
-                    </label>
-                </div>
-                &nbsp;
-                <div class="contenedor__input">
-                    <input type='text' id="txtDescripcionMaterial" required ></input>
-                    <label for="txtDescripcionMaterial">
-                       Descripción
-                    </label>
-                </div>
-                &nbsp;
-                <div class="contenedor__input">
-                    <input type='text' id="txtNombreMaterial" required ></input>
-                    <label for="txtNombreMaterial">
-                       Nombre Material
-                    </label>
-                </div>
+                <form action="" id="formMateriales">
+                    <input type="hidden" id="hideTxtMateriales" name="hideTxtMateriales">
+                    <div class="contenedor__input">
+                        <input type='text' id="txtCodSap" name="txtCodSap" required ></input>
+                        <label for="txtCodSap">
+                            Código Sap
+                        </label>
+                    </div>
+                    &nbsp;
+                    <div class="contenedor__input">
+                        <input type='text' id="txtDescripcionMaterial" name="txtDescripcionMaterial" required ></input>
+                        <label for="txtDescripcionMaterial">
+                        Descripción
+                        </label>
+                    </div>
+                    &nbsp;
+                    <div class="contenedor__input">
+                        <input type='text' id="txtNombreMaterial" name="txtNombreMaterial" required ></input>
+                        <label for="txtNombreMaterial">
+                        Nombre Material
+                        </label>
+                    </div>
+            </form>
             </div>
 
-            <button>Guardar</button>
+            <button   class="btnOn" id="btnGuardarMaterial">Guardar</button>
 
 
             <div class="contenedor__tabla" id="contenedor__tabla">

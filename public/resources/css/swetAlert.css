@@ -1,0 +1,58 @@
+/* .swal2-container{ */
+    /* filter: blur(2px); */
+/* } */
+.swal2-popup{
+    background-color: var(--colorStandar) !important;
+}
+
+/* .swal2-success-ring{ */
+    /* background-color: rgba(255, 0, 0d, 0.312) !important; */
+    /* color: blue !important; */
+/* } */
+
+.swal2-icon.swal2-success [class^=swal2-success-line]{
+ background-color: var(--colorDanger) !important;
+}
+.swal2-icon.swal2-success .swal2-success-ring{
+    border: .25em solid var(--colorDark) !important;
+}
+.swal2-styled.swal2-confirm{
+    background-color: var(--colorDanger) !important;
+    color: white !important;
+}
+.swal2-styled.swal2-confirm:hover{
+    background-color: rgb(184, 25, 25) !important;
+}
+
+
+button.swal2-cancel{
+    background-color: rgb(239, 150, 34) !important;
+}
+
+button.swal2-cancel:hover{
+    background-color: rgb(193, 140, 70) !important;
+}
+/* color titulo */
+.swal2-title{
+    color: var(--colorFirst1) !important;
+}
+/* texto debajo de titulo */
+.swal2-html-container{
+    color: var(--colorDanger) !important;
+}
+
+.swal2-footer{
+    color: var(--colorpalet5) !important;
+}
+
+
+/* sombra botones  */
+.swal2-styled{
+    background-color: none !important;
+    box-shadow: none !important;
+}
+
+/* fondo modal oscuro */
+/* .swal2-container.cccc, .swal2-container.swal2-noanimation{
+ /* background-color: rgba(0,0,0,.6) !important; */
+/* }  */

@@ -5,6 +5,10 @@
 require_once "conecction.php";
 class Materiales{
 
+   ##-----------------------------------------------------------------
+  ## INSERTAR matreriales
+  #==================================================================
+
     public static function insertarMateriales($dato) {
 
        
@@ -38,9 +42,11 @@ class Materiales{
             }
 
 
-      }
-
-      static public function listarMateriales(){
+    }
+ ##-----------------------------------------------------------------
+  ##  LISTAR materiales
+  #==================================================================
+    static public function listarMateriales(){
         $stmt  =  Conexion::cnx()->prepare("SELECT * FROM materiales");
         if ($stmt -> execute()) {
           if ($stmt->rowCount() > 0) {
@@ -54,10 +60,49 @@ class Materiales{
         } 
     }
 
+  ##-----------------------------------------------------------------
+  ##  MOSTRAR POR "ID" materiales
+  #==================================================================
+  static public function listarIdMateriales($idMaterial){
+    $stmt  = Conexion::cnx()->prepare("SELECT * FROM materiales WHERE id_mat = :idMaterial");
+    $stmt ->bindParam(":idMaterial",$idMaterial,PDO::PARAM_INT);
+    $stmt -> execute();
+    return $stmt->fetch();
+    //   $stmt->close();
+  }
 
 
+
+    ##-----------------------------------------------------------------
+  ##  ELIMINAR POR id MATERIAL
+  #==================================================================
+  static public function eliminarMaterial($idMaterial){
+    try{
+            $stmt  = Conexion::cnx()->prepare("DELETE  FROM materiales WHERE id_mat =:idMaterial");
+            $stmt ->bindParam(":idMaterial",$idMaterial,PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                  if ($stmt->rowCount() > 0) {
+                      return array("resp" =>1);
+                  }else{
+                      return array("resp"=>0);
+                  }
+            }else {
+              return array("resp"=>10);
+            }
+            // $stmt->close();
+
+       }
+       catch(PDOException $e){
+              return array("resp"=>10,"<br>","menssajeError"=>$e->getMessage(),"<br>","lineaDeError"=>$e->getLine());
+               exit();
+       }
+  }
 
 }
+
+
+
+
 
 // $obj = new Materiales();
 // $res = $obj->listarMateriales();
