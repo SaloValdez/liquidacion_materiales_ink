@@ -98,10 +98,49 @@ class Materiales{
        }
   }
 
+
+
+      ##-----------------------------------------------------------------
+      ##  ACTUALIZAR material
+      #==================================================================
+      static public function actualizarCategorioProductoModel($datosModel){
+        try {
+          $stmt  = Conexion::cnx()->prepare("SELECT * FROM categoria_producto WHERE detalle_categoria_producto = :detalleCategoriaProducto");
+          $stmt ->bindParam(":detalleCategoriaProducto",$datosModel['detalleCategoriaProducto'],PDO::PARAM_STR);
+          if ($stmt -> execute()){
+              if ($stmt->rowCount() > 0) {
+                  return array("resp" =>3);
+              }else{
+                  $stmt  = Conexion::cnx()->prepare("UPDATE categoria_producto SET 
+                                                                      detalle_categoria_producto = :detalleCategoriaProducto,
+                                                                      fecha_registro_categoria_producto = :fechaRegistroCategoriaProducto,
+                                                                      fk_id_empleado=:fkIdEmpleado
+                                                                      WHERE id_categoria_producto = :idCategoriaProducto");
+
+
+                  $stmt ->bindParam(":detalleCategoriaProducto",$datosModel['detalleCategoriaProducto'],PDO::PARAM_STR);
+                  $stmt ->bindParam(":fechaRegistroCategoriaProducto",$datosModel['fechaRegistroCategoriaProducto'],PDO::PARAM_STR);
+                  $stmt ->bindParam(":fkIdEmpleado",$datosModel['fkIdEmpleado'],PDO::PARAM_INT);
+                  $stmt ->bindParam(":idCategoriaProducto",$datosModel['idCategoriaProducto'],PDO::PARAM_INT);
+                  if ($stmt -> execute()) {
+                    if ($stmt->rowCount() > 0) {
+                        return array("resp" =>1);
+                    }else{
+                        return array("resp"=>0);
+                    }
+                  }else {
+                    return array("resp"=>10);
+                  }
+              }
+          } 
+      }catch (Exception $e) {
+          // return array("resp"=>'errorExceptionssss');
+          return array("resp"=>10,"<br>","menssajeError"=>$e->getMessage(),"<br>","lineaDeError"=>$e->getLine());
+          exit();
+        }
+    }
+
 }
-
-
-
 
 
 // $obj = new Materiales();
