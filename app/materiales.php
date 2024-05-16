@@ -103,25 +103,27 @@ class Materiales{
       ##-----------------------------------------------------------------
       ##  ACTUALIZAR material
       #==================================================================
-      static public function actualizarCategorioProductoModel($datosModel){
+      static public function actualizarMateriales($datos){
         try {
-          $stmt  = Conexion::cnx()->prepare("SELECT * FROM categoria_producto WHERE detalle_categoria_producto = :detalleCategoriaProducto");
-          $stmt ->bindParam(":detalleCategoriaProducto",$datosModel['detalleCategoriaProducto'],PDO::PARAM_STR);
+          $stmt  = Conexion::cnx()->prepare("SELECT * FROM materiales WHERE sap_mat = :sapMaterial");
+          $stmt ->bindParam(":sapMaterial",$datos['sapMat'],PDO::PARAM_STR);
+          // $stmt ->bindParam(":descripcionMat",$datos['descripcionMat'],PDO::PARAM_STR);
+          // $stmt ->bindParam(":nombreMaterial",$datos['nombreMat'],PDO::PARAM_STR);
           if ($stmt -> execute()){
               if ($stmt->rowCount() > 0) {
                   return array("resp" =>3);
               }else{
-                  $stmt  = Conexion::cnx()->prepare("UPDATE categoria_producto SET 
-                                                                      detalle_categoria_producto = :detalleCategoriaProducto,
-                                                                      fecha_registro_categoria_producto = :fechaRegistroCategoriaProducto,
-                                                                      fk_id_empleado=:fkIdEmpleado
-                                                                      WHERE id_categoria_producto = :idCategoriaProducto");
+                  $stmt  = Conexion::cnx()->prepare("UPDATE materiales SET 
+                                                                      sap_mat = :sapMat,
+                                                                      descripcion_mat = :descripcionMat,
+                                                                      nombre_mat=:nombreMat
+                                                                      WHERE id_mat = :idMat");
 
 
-                  $stmt ->bindParam(":detalleCategoriaProducto",$datosModel['detalleCategoriaProducto'],PDO::PARAM_STR);
-                  $stmt ->bindParam(":fechaRegistroCategoriaProducto",$datosModel['fechaRegistroCategoriaProducto'],PDO::PARAM_STR);
-                  $stmt ->bindParam(":fkIdEmpleado",$datosModel['fkIdEmpleado'],PDO::PARAM_INT);
-                  $stmt ->bindParam(":idCategoriaProducto",$datosModel['idCategoriaProducto'],PDO::PARAM_INT);
+                  $stmt ->bindParam(":sapMat",$datos['sapMat'],PDO::PARAM_STR);
+                  $stmt ->bindParam(":descripcionMat",$datos['descripcionMat'],PDO::PARAM_STR);
+                  $stmt ->bindParam(":nombreMat",$datos['nombreMat'],PDO::PARAM_STR);
+                  $stmt ->bindParam(":idMat",$datos['idMat'],PDO::PARAM_INT);
                   if ($stmt -> execute()) {
                     if ($stmt->rowCount() > 0) {
                         return array("resp" =>1);

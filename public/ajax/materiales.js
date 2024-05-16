@@ -2,6 +2,7 @@
 $(document).ready(function(){
     listarMaterial();
     insertarMateriales();
+    actualizarMateriales();
 
     
 });
@@ -161,30 +162,32 @@ function listarMaterial(){
 
 
     function actualizarMateriales(){
-        $('#btnActualizarCategoriaProducto').click(function(){
-          activarId();
-          datos=$('#frmCategoriaProducto').serialize();
-          caja1 =   $("#idCategoriaProducto").val();
-          caja2 =   $("#detalleCategoriaProducto").val();
-          // alert('actialuzar product');
-    
-          if(caja1.length<1 || caja2.length<1){
+        $('#btnActualizarMaterial').click(function(){
+        
+          dataForm=$('#formMateriales').serialize();
+          caja1 =   $("#txtCodSap").val();
+          caja2 =   $("#txtDescripcionMaterial").val();
+          caja3 =   $("#txtNombreMaterial").val();
+
+        if (caja1.length < 1 || caja2.length < 1 ||caja3.length < 1) {   
                errorToast("Error",'Los campos estan vacios.','');
                 // return false;
           }else{
           
               $.ajax({
                   type:"POST",
-                  data:datos,
-                  url:"./views/requestController/categoria_producto/rc_actualizar_categoria_producto.php",
+                  data:{tipoOperacion:'update',datos:dataForm},
+                  url:"./controller/materialesController.php",
                   success:function(r){
-                  datos=jQuery.parseJSON(r);
+                  // datos=jQuery.parseJSON(r);
+                    console.log(r);
+                   return false;
                     var res = datos['resp'];
                     console.log(res);
     
                     if(res==1){
                        successToast('Muy bien','Se actializo Correctamente.','','');
-                       deshabilitar();
+
                     }else if(res==3) {
                       errorToast('Ups..','La categoria ya',' existe.');
                     }else{

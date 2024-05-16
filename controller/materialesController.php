@@ -34,7 +34,18 @@ if($tipoOperacion =='insert'){
     $res = $obj->eliminarMaterial($idMaterial);
     echo json_encode($res);
 }else if($tipoOperacion =='update'){
+    $datos = $_POST['datos'];
+    parse_str($datos,$myArray);
 
+    $update = array(  'sapMat'=>strtoupper($myArray['txtCodSap']),
+                        'descripcionMat'=>strtoupper($myArray['txtDescripcionMaterial']),
+                        'nombreMat'=>strtoupper($myArray['txtNombreMaterial']),
+                        'idMat'=>strtoupper($myArray['hideTxtMateriales']),
+                    );
+    $res = $obj-> actualizarMateriales($update);
+    echo json_encode ($res);
+
+                   
 }
 
 
