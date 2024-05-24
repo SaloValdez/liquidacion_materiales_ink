@@ -4,6 +4,11 @@ $(document).ready(function(){
     insertarMateriales();
     actualizarMateriales();
 
+
+
+
+    
+
     
 });
 
@@ -15,18 +20,25 @@ function listarMaterial(){
         url:"./controller/materialesController.php",   
         success:function(r){
             datos=jQuery.parseJSON(r);
+            
             resp = datos['arrayMateriales'];
             console.log(resp);
 
             let modeloTabla = '<table>';
-            modeloTabla = modeloTabla + '<tr><th>Cod. Sap</th><th>Descripción</th><th>Nombre Material</th> <th colspan="2">Acción</th></tr>';
+            modeloTabla = modeloTabla + '<tr> <th>Cod. Sap</th> <th>Descripción</th> <th>Nombre Material</th><th>Tipo Mat.</th> <th>Medida Mat.</th> <th>Estado Mat.</th> <th>Usiario</th><th colspan="2">Acción</th>'
+                                          '</tr>';
             resp.forEach(p => {
                 modeloTabla = modeloTabla + '<tr>';
-                modeloTabla = modeloTabla + '<td>'+ p['sap_mat']+' </td>'
-                modeloTabla = modeloTabla + '<td>'+ p['descripcion_mat']+' </td>'
-                modeloTabla = modeloTabla + '<td>'+ p['nombre_mat']+' </td>'
-                modeloTabla = modeloTabla + '<td><a  class="btnOff btnTabla" onclick="eliminarMateriales('+ p['id_mat']+');" href="#">Eliminar</a> </td>'
-                modeloTabla = modeloTabla + '<td><a  class="btn__succes btnTabla btntableSucces" onclick="mostrarIdMateriales('+ p['id_mat']+');" href="#">Ver</a> </td>'
+                    modeloTabla = modeloTabla + '<td>'+ p['sap_mat']+' </td>'
+                    modeloTabla = modeloTabla + '<td>'+ p['descripcion_mat']+' </td>'
+                    modeloTabla = modeloTabla + '<td>'+ p['nombre_mat']+' </td>'
+                    
+                    modeloTabla = modeloTabla + '<td>'+ p['tipo_mat']+' </td>'
+                    modeloTabla = modeloTabla + '<td>'+ p['medida_mat']+' </td>'
+                    modeloTabla = modeloTabla + '<td>'+ p['estado_mat']+' </td>'
+                    modeloTabla = modeloTabla + '<td>'+ p['id_personal']+' </td>'
+                    modeloTabla = modeloTabla + '<td><a  class="btnOff btnTabla" onclick="eliminarMateriales('+ p['id_mat']+');" href="#">Eliminar</a> </td>'
+                    modeloTabla = modeloTabla + '<td><a  class="btn__succes btnTabla btntableSucces" onclick="mostrarIdMateriales('+ p['id_mat']+');" href="#">Ver</a> </td>'
          
                 modeloTabla = modeloTabla + '</tr>'
                 
@@ -42,8 +54,10 @@ function listarMaterial(){
   }
 
   function insertarMateriales(){
-        $('#btnGuardarMaterial').click(function(){
+
+        $('#btnGuardarMaterial').click(function(e){
     
+          event.preventDefault(e);
                   caja1 =   $("#txtCodSap").val();
                   caja2 =   $("#txtDescripcionMaterial").val();
                   caja3 =   $("#txtNombreMaterial").val();
@@ -53,7 +67,7 @@ function listarMaterial(){
                 }else {
                  
                   datos=$('#formMateriales').serialize(); 
-
+                  // console.log(datos);
                 // datos = new FormData($('#formMateriales')[0]);
                 //   console.log(datos);
 
@@ -66,9 +80,10 @@ function listarMaterial(){
                         // console.log(r); 
                         datos  = jQuery.parseJSON(r);
                         var  respuesta = datos['resp'];
+                        // console.log(respuesta);
                         if (respuesta==1) {
                              alert('se inserto correctamente');
-                            //  listarMaterial();
+                             listarMaterial();
                             window.location.reload();
 
                         }else if(respuesta ==3){
@@ -146,6 +161,8 @@ function listarMaterial(){
 
 
     function mostrarIdMateriales(idMat){
+     
+
         $.ajax({  
               type:"POST",
               data:{tipoOperacion:'readIdMaterial',idMaterial:idMat},
@@ -156,6 +173,45 @@ function listarMaterial(){
                     $('#txtDescripcionMaterial').val(datos['descripcion_mat']);
                     $('#txtNombreMaterial').val(datos['nombre_mat']);
                     $('#hideTxtMateriales').val(datos['id_mat']);
+                    $('#idPersonal').val(datos['id_personal']);
+
+                    var tipoMat = datos['tipo_mat'];
+                    var unidMedMat = datos['medida_mat'];
+                    var estadoMat = datos['estado_mat'];
+                  
+
+                      console.log(tipoMat);
+                      console.log(unidMedMat);
+                      console.log(estadoMat);
+                    // $('#formMateriales')[0].reset();
+                    if(tipoMat ==0){
+                      jQuery("#noSeriado").attr('checked', true);
+                    }else if(tipoMat ==1){
+                      jQuery("#seriado").attr('checked', true);
+                    }
+
+
+                    // Query("#"+unidMedMat).attr('checked', true);
+                    if(unidMedMat =='PZA'){
+                      $("#Pza").attr('checked', true);
+                    }else if(unidMedMat =='METROS'){
+                      $("#Metros").attr('checked', true);
+
+                    }else if(unidMedMat =='ROLLOS'){
+                      $("#Rollos").attr('checked', true);
+
+                    }else if(unidMedMat =='CAJAS'){
+                      $("#Cajas").attr('checked', true);
+
+                    }
+
+
+                    if(estadoMat == 0){
+                      $("#desEstado").attr('checked', true);
+                    }else if(estadoMat == 1){
+                      $("#actiEstado").attr('checked', true);
+                    } 
+                    // $('#formMateriales')[0].reset();
               }
             });
     }
@@ -181,7 +237,7 @@ function listarMaterial(){
                   success:function(r){
                   // datos=jQuery.parseJSON(r);
                     console.log(r);
-                   return false;
+                  //  return false;
                     var res = datos['resp'];
                     console.log(res);
     

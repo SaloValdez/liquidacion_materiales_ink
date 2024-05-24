@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./public/resources/css/swetAlert.css">
     <link rel="stylesheet" href="./public/resources/css/grid-salo.css">
 
-    <script src="./public/library/jquery271.js"></script>
+    <script src="./public/library/jquery-3.7.1.min.js"></script>
     <script src="./public/library/sweetalert2@11.js"></script>
     <script src="./public/library/sweetAlertToast.js"></script>
 
@@ -29,44 +29,105 @@
 
 
             <div class="fila">
+                        <input type="text" name="hideTxtMateriales" value=""  id="hideTxtMateriales">
+                        <input type="text" name="idPersonal" value="1"  id="idPersonal">
                         <div class="col-lg-2  col-md-6 col-xs-12">
                             <div class="group__input " >
-                                <input type="text" id="txtCodSap" name="txtCodSap" class="input" value=""  maxlength="10">
+                                <input type="text" id="txtCodSap" name="txtCodSap" class="input" value=""  maxlength="">
                                 <label for="txtCodSap">Cod. Sap</label>
                             </div>
                         </div>
 
                         <div class="col-lg-2 col-md-6 col-xs-12">
                             <div class="group__input ">
-                                <input type="text" id="txtDescripcionMaterial"  name="txtDescripcionMaterial" class="input" value=""  maxlength="8" >
+                                <input type="text" id="txtDescripcionMaterial"  name="txtDescripcionMaterial" class="input" value=""  maxlength="" >
                                 <label for="txtDescripcionMaterial">Descripción</label>
                             </div>
                         </div>
                         
                         <div class="col-lg-3 col-md-6 col-xs-12">
                             <div class="group__input ">
-                                <input type="text" id="txtNombreMaterial"  name="txtNombreMaterial" class="input" value=""  maxlength="8" >
+                                <input type="text" id="txtNombreMaterial"  name="txtNombreMaterial" class="input" value=""  maxlength="" >
                                 <label for="txtNombreMaterial">Nombre material</label>
                             </div>
                         </div>
+                      
+                    </div>
+                    <div class="fila">
+                        <div class="content__radio">
+                                <span class="nombre_grup_radio">Tipo Material</span>
+                                <div class="grup__radio">
+                                    <label>
+                                        <input type="radio"  id="seriado"  name="radioTipoMat" value="1" />
+                                        <span>Seriado</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio"  id="noSeriado"  name="radioTipoMat" value="0" />
+                                        <span>No seriado</span>
+                                    </label>
+                                   
+                                </div>
+                        </div>
+                        <div class="content__radio">
+                                    <span class="nombre_grup_radio">Unidad de medida</span>
+                                    <div class="grup__radio">
+                                        <label>
+                                            <input type="radio" value="PZA" id="Pza" name="radioUnidMed"  />
+                                            <span>Pza.</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="METROS" id="Metros" name="radioUnidMed"/>
+                                            <span>Metros</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio"  value="ROLLOS" id="Rollos" name="radioUnidMed"/>
+                                            <span>Rollos</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio"  value="CAJAS"  id="Cajas" name="radioUnidMed"/>
+                                            <span>Cajas</span>
+                                        </label>
+                                    </div>
+                             </div>
+                             <div class="content__radio">
+                                <span class="nombre_grup_radio">Estado Material</span>
+                                <div class="grup__radio">
+                                    <label>
+                                        <input type="radio" name="radioEstadoMat" id="actiEstado" value="1" />
+                                        <span>Activado</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="radioEstadoMat" id="desEstado" value="0"/>
+                                        <span>Desactivado</span>
+                                    </label>
+                                   
+                                </div>
+                        </div>
+                    </div>
+                     
                         <div class="fila">
                             <div class="group__input col_2">
                                 <button type="submit" class="btn__succes" id="btnGuardarMaterial">Insertar</button>
                                 <button type="submit" class="btn__span" id="btnActualizarMaterial">Actualizar</button>
                             </div>
                         </div>
-           </div>
-        </form>
 
-
-
+                                          
         <div class="contenedor__tabla" id="contenedor__tabla">
 
-        </div>
+        </div>    
+           </div>
+        </form>
+      
+
+
  
     </div>
 
     
+
+
+      
 
 
 
@@ -76,5 +137,6 @@
      
 
        <script src="./public/ajax/materiales.js"></script>
+   
 </body>
 </html>

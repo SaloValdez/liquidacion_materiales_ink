@@ -3,13 +3,13 @@
 
 
 require_once "conecction.php";
-class Materiales{
+class Liquidacion{
 
    ##-----------------------------------------------------------------
   ## INSERTAR matreriales
   #==================================================================
 
-    public static function insertarMateriales($dato) { 
+    public static function liquidarMaterial($dato) { 
                     $stmt  =  Conexion::cnx()->prepare("INSERT INTO materiales ( 
                                                                                 sap_mat,
                                                                                 descripcion_mat,
@@ -55,13 +55,15 @@ class Materiales{
 
     }
  ##-----------------------------------------------------------------
-  ##  LISTAR materiales
+  ##  LISTAR materiales LIQUIDADICON
   #==================================================================
-    static public function listarMateriales(){
-        $stmt  =  Conexion::cnx()->prepare("SELECT * FROM materiales");
+    static public function listarMaterialesLiquidacion($estadoMat){
+        $stmt  =  Conexion::cnx()->prepare("SELECT * FROM materiales WHERE estado_mat = :estadoMat");
+        $stmt ->bindParam(":estadoMat",$estadoMat,PDO::PARAM_INT);
+
         if ($stmt -> execute()) {
           if ($stmt->rowCount() > 0) {
-              return array("resp" =>1, "arrayMateriales"=>$stmt->fetchAll());
+              return array("resp" =>1, "arrayMaterialesLiquidacion"=>$stmt->fetchAll());
               // return $stmt->fetchAll();
           }else{
               return array("resp"=>0);

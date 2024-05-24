@@ -6,68 +6,87 @@
     <title>Document</title>
 <link rel="stylesheet" href="./public/resources/css/index.css">
 <link rel="stylesheet" href="./public/resources/css/grid-salo.css">
-    <script src="./public/library/jquery2.7.1.js"></script>
+    <script src="./public/library/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-
+    <nav>
+        <ul>
+            <li><a href="index.html">Liquidar</a></li>
+            <li><a href="./materiales.html">Materiales</a></li>
+            <li><a href="./tecnicos.html">Tecnicos</a></li>
+        </ul>
+      </nav>
+       
 <div class="contenedor">
-    <div class="fila"> 
-        <div class="col-lg-6  col-md-6 col-xs-12">
-            <div class="cont__input2" >
-                <!-- <label for="txtCodSap">Cod. Sap</label> -->
-                <div class="label__input2">Ingrese Material</div>
-                <input type="text" id="txtCodSap" name="txtCodSap" class="input" value=""  maxlength="10">
+        <div class="fila"> 
+            <div class="col-lg-6  col-md-6 col-xs-12">
+                <div class="cont__input2" >
+                    <!-- <label for="txtCodSap">Cod. Sap</label> -->
+                    <div class="label__input2">Ingrese Material</div>
+                    <input type="text" id="txtCodSap" name="txtCodSap" class="input" value=""  maxlength="10">
+                </div>
             </div>
         </div>
-    </div>
 
 
         <div class="cont_liqu">
-            <div class="cabecera">
+                <div class="cabecera">
+                        <div class="fila contCabezera">
+                            <div class="col-lg-2  col-md-6 col-xs-12">
+                                <div class="cabezera">Cod. Sap</div>
+                            </div>
+                            <div class="col-lg-4  col-md-6 col-xs-12">
+                                <div class="cabezera">Descripcion</div>
+                            </div>
+                            <div class="col-lg-2  col-md-6 col-xs-12">
+                                <div class="cabezera">Nombre</div>
+                            </div>
+                            <div class="col-lg-2  col-md-6 col-xs-12">
+                                <div class="cabezera">Cantidad</div>
+                            </div>
+                            <div class="col-lg-2  col-md-6 col-xs-12">
+                                <div class="cabezera">Unidad</div>
+                            </div>
+                        </div>
+                </div>
+                <div class="body_liq" id="contenedorMateriales">
+                     
+                </div>
 
-           
-            <div class="fila">
-                <div class="col-lg-4  col-md-6 col-xs-12">
-                        <input type="text" id="txtCodSap" name="txtCodSap" class="input" value="Detalle Mat."  maxlength=""> 
+
+                <div class="serieEquipos">
+
+                    <input type="text" id="inputSerie" name="inputSerie">
+             
+                <button id="eliminarSeriesOntHuawei">Eliminar Todos</button>
                 </div>
-                <div class="col-lg-2  col-md-6 col-xs-12">
-                    <input type="text" id="txtCodSap" name="txtCodSap" class="input" value="Nombre Mat."  maxlength="10"> 
+
+
+                <div class="listaSerie col-lg-3  col-md-6 col-xs-12" id="listaSerie"  >
+                        <!-- <div class="contListaSerie" id="">
+                                <span class="eliminar"  onclick="eliminairId('sss')">1</span>
+                                    <span>98MV340987YCD</span>
+                                    <button id="eliminard1">x</button>
+                        </div>
+                        <div class="contListaSerie" id="">
+                            <span>2</span>
+                                <span>98MV340987YCD</span>
+                                <button id="eliminard2">x</button>
+                        </div>
+                        <div class="contListaSerie" id="">
+                            <span>3</span>
+                                <span>98MV340987YCD</span>
+                                <button id="eliminard3">x</button>
+                        </div> -->
                 </div>
-                <div class="col-lg-1  col-md-6 col-xs-12">
-                        <input type="text" id="txtCodSap" name="txtCodSap" class="input" value="Cantidad"  maxlength="10"> 
-                </div>
-                <div class="col-lg-1  col-md-6 col-xs-12">
-                        <input type="text" id="txtCodSap" name="txtCodSap" class="input" value="Tipo Med."  maxlength="10"> 
-                </div>
+
+
+               
             </div>
-        </div>
-
-        <div class="cuerpo_liq">
-
-       
-             <div class="fila">
-                <div class="col-lg-4  col-md-6 col-xs-12">
-                        <input type="text" id="txtCodSap" name="txtCodSap" class="input" value=""  maxlength="10"> 
-                </div>
-                <div class="col-lg-2  col-md-6 col-xs-12">
-                    <input type="text" id="txtCodSap" name="txtCodSap" class="input" value=""  maxlength="10"> 
-                </div>
-                <div class="col-lg-1  col-md-6 col-xs-12">
-                        <input type="text" id="txtCantONT" name="txtCodSap" class="input" value=""  maxlength="10"> 
-                </div>
-                <div class="col-lg-1  col-md-6 col-xs-12">
-                        <input type="text" id="txtUnidMedOnt" name="txtCodSap" class="input" value=""  maxlength="10"> 
-                </div>
-            </div>
-
-        </div>
-            
-        </div>
-        
 </div>
 
 
-
 <script src="./public/resources/js/index.js"></script>
+<script src="./public/ajax/liquidacion.js"></script>
 </body>
 </html>

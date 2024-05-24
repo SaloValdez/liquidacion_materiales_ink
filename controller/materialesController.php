@@ -10,6 +10,10 @@ if($tipoOperacion =='insert'){
     $insertar = array(  'sapMat'=>strtoupper($myArray['txtCodSap']),
                         'descripcionMat'=>strtoupper($myArray['txtDescripcionMaterial']),
                         'nombreMat'=>strtoupper($myArray['txtNombreMaterial']),
+                        'tipoMat'=>strtoupper($myArray['radioTipoMat']),
+                        'medidaMat'=>strtoupper($myArray['radioUnidMed']),
+                        'estadoMat'=>strtoupper($myArray['radioEstadoMat']),
+                        'idPersonal'=>strtoupper($myArray['idPersonal']),
                     );
 
     $res = $obj-> insertarMateriales($insertar);
@@ -40,6 +44,10 @@ if($tipoOperacion =='insert'){
     $update = array(  'sapMat'=>strtoupper($myArray['txtCodSap']),
                         'descripcionMat'=>strtoupper($myArray['txtDescripcionMaterial']),
                         'nombreMat'=>strtoupper($myArray['txtNombreMaterial']),
+                        'tipoMat'=>strtoupper($myArray['radioTipoMat']),
+                        'medidaMat'=>strtoupper($myArray['radioUnidMed']),
+                        'estadoMat'=>strtoupper($myArray['radioEstadoMat']),
+                        'idPersonal'=>strtoupper($myArray['idPersonal']),
                         'idMat'=>strtoupper($myArray['hideTxtMateriales']),
                     );
     $res = $obj-> actualizarMateriales($update);
